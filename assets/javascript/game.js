@@ -1,8 +1,8 @@
 // declare initial variable values
 var wins = 0;
 var losses = 0;
-var guessesAlloted = 7;
-var userGuess = "";
+var guessesAllotted = 7;
+var guessesLeft, guessedLetters, targetLetter, userGuess;
 // make an array of the alphabet
 var alphabet = ("abcdefghijklmnopqrstuvwxyz").split("");
 
