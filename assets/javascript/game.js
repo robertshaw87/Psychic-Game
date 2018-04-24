@@ -6,17 +6,18 @@ var guessesLeft, guessedLetters, targetLetter, userGuess;
 // make an array of the alphabet
 var alphabet = ("abcdefghijklmnopqrstuvwxyz").split("");
 
-// decide on a random letter to be the target letter
-function getRandomLetter(){
-    return alphabet[(Math.floor(Math.random() * 25))];
+// gets a random element from an array
+function getRandomElement(inputArray){
+    return inputArray[(Math.floor(Math.random() * (inputArray.length - 1)))];
 }
 
+// decide on a random letter to be the target letter
 // make an empty array of the letters already guessed by the user
 // resets the gamestate to the default without affecting wins and losses
 function gameReset(){
     guessesLeft = guessesAllotted;
     guessedLetters = [""];
-    targetLetter = getRandomLetter();
+    targetLetter = getRandomElement(alphabet);
     console.log("Target: " + targetLetter);
 }
 
