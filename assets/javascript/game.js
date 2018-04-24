@@ -1,20 +1,26 @@
 // declare initial variable values
 var wins = 0;
 var losses = 0;
-var guessesLeft = 7;
+var guessesAlloted = 7;
 var userGuess = "";
 // make an array of the alphabet
 var alphabet = ("abcdefghijklmnopqrstuvwxyz").split("");
 
-// make an empty array of the letters already guessed by the user
-var guessedLetters = [""];
 // decide on a random letter to be the target letter
 function getRandomLetter(){
     return alphabet[(Math.floor(Math.random() * 25))];
 }
 
-var targetLetter = getRandomLetter();
-console.log(targetLetter);
+// make an empty array of the letters already guessed by the user
+// resets the gamestate to the default without affecting wins and losses
+function gameReset(){
+    guessesLeft = guessesAllotted;
+    guessedLetters = [""];
+    targetLetter = getRandomLetter();
+    console.log("Target: " + targetLetter);
+}
+
+gameReset();
 
 do {
 console.log(guessedLetters);
@@ -25,18 +31,15 @@ userGuess = prompt("Guess a letter");
 
 // check user input to make sure it is a new guess
 while (guessedLetters.indexOf(userGuess) !== -1) {
-    userGuess = prompt("Guess a new letter")
+    userGuess = prompt("Guess a new letter, you've already guessed \n" + guessedLetters)
 }
 
 // if it is the correct letter, 
 if (userGuess === targetLetter) {
 // add 1 to wins, reset guesses and guess array to default
     wins++;
-    guessesLeft = 7;
-    guessedLetters = [""];
 // set a new random letter to be guessed
-    targetLetter = getRandomLetter();
-    console.log("T: " + targetLetter);
+    gameReset();
 } else {
 // if it is not the correct letter,
 // add guess to guess array, reduce guesses left
@@ -46,10 +49,7 @@ if (userGuess === targetLetter) {
     if (guessesLeft <= 0) {
         alert("You Lose");
         losses++;
-        guessesLeft = 7;
-        guessedLetters = [""];
-        targetLetter = getRandomLetter();
-        console.log("T: " + targetLetter);
+        gameReset();
     }
 }
 // else go back to getting user input
