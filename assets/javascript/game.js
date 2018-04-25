@@ -5,7 +5,9 @@ var losses = 0;
 var guessesAllotted = 7;
 var guessesLeft, guessedLetters, targetLetter, userGuess;
 // make an array of the alphabet
-var alphabet = ("abcdefghijklmnopqrstuvwxyz").split("");
+var alphabet = "abcdefghijklmnopqrstuvwxyz".toUpperCase();
+console.log(alphabet);
+alphabet = alphabet.split("");
 
 // gets a random element from an array
 function getRandomElement(inputArray){
@@ -37,20 +39,27 @@ gameReset();
 
 // When a key is pressed and released:
 document.onkeyup = function(userInput) {
-    getElem("playerWins").textContent = "";
+    getElem("playerMessage").textContent = "";
     userGuess = userInput.key;
-    userGuess = userGuess.toLowerCase();
+    userGuess = userGuess.toUpperCase();
     console.log("User Guess: " + userGuess);
 
     // ignore any key that isn't a letter or has already been guessed
-    if ((-1 != alphabet.indexOf(userGuess)) && (-1 === guessedLetters.indexOf(userGuess))) {
+    if (-1 === alphabet.indexOf(userGuess)) {
+        getElem("playerMessage").textContent = "Please guess a letter between A-Z.";
+    } else {
+    if (-1 != guessedLetters.indexOf(userGuess)) {
+        getElem("playerMessage").textContent = "You have already guessed " + userGuess;
+
+    // if the guess was a letter that hasn't been guessed yet
+    } else {   
         
         // if the guess was correct
         if (userGuess === targetLetter) {
             // increase the number of wins and reset the game to a new game
             console.log("You win!");
             wins += 1;
-            getElem("playerWins").textContent = "You guessed the correct letter! It was " + targetLetter + "!";
+            getElem("playerMessage").textContent = "You guessed the correct letter! It was " + targetLetter + "!";
             gameReset();
         
         // if the guess was incorrect
@@ -59,19 +68,19 @@ document.onkeyup = function(userInput) {
             guessedLetters.push(userGuess);
             guessesLeft -= 1;
             console.log("You missed!");
-            getElem("playerChoices").textContent = guessedLetters;
+            getElem("playerChoices").textContent = guessedLetters.join(" ");
             
             // if the user has no guesses left
             if (guessesLeft <= 0) {
 
                 // increase the number of losses, reset the game to a new game
                 losses += 1;
-                getElem("playerWins").textContent = "You ran out of guesses! The correct letter was " + targetLetter + "!";
+                getElem("playerMessage").textContent = "You ran out of guesses! The correct letter was " + targetLetter + "!";
                 gameReset();
                 console.log("You lose!");
                 
             }
-        }
+        }}
     }
 
     getElem("wins").textContent = wins;
