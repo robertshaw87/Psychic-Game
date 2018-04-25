@@ -6,7 +6,6 @@ var guessesAllotted = 7;
 var guessesLeft, guessedLetters, targetLetter, userGuess;
 // make an array of the alphabet
 var alphabet = "abcdefghijklmnopqrstuvwxyz".toUpperCase();
-console.log(alphabet);
 alphabet = alphabet.split("");
 
 // gets a random element from an array
@@ -61,23 +60,22 @@ document.onkeyup = function(userInput) {
             wins += 1;
             getElem("playerMessage").textContent = "You guessed the correct letter! It was " + targetLetter + "!";
             gameReset();
-        
+            
         // if the guess was incorrect
         } else {
             // add the guess to the list of already guessed letters, reduce the guesses the user has left
+            console.log("You missed!")
             guessedLetters.push(userGuess);
             guessesLeft -= 1;
             getElem("playerChoices").textContent = guessedLetters.join(" ");
-            console.log("You missed!")
             
             // if the user has no guesses left
             if (guessesLeft <= 0) {
-
+                console.log("You lose!");
                 // increase the number of losses, reset the game to a new game
                 losses += 1;
                 getElem("playerMessage").textContent = "You ran out of guesses! The correct letter was " + targetLetter + "!";
                 gameReset();
-                console.log("You lose!");
             }
         }}
     }
