@@ -13,6 +13,27 @@ function getRandomElement(inputArray){
     return inputArray[(Math.floor(Math.random() * inputArray.length))];
 }
 
+// compares two input arrays and returns whether they're equivalent
+function compareArrays(arr1, arr2) {
+
+    // return false if either argument isn't an array
+    if ((typeof arr1 != "array") || (typeof arr2 != "array")){
+        return false;
+    }
+
+    // return false if the two arrays aren't the same length
+    if (arr1.length != arr2.length) {
+        return false;
+    }
+
+    for (var i=0; i < arr1.length; i++){
+        if (arr1[i] !=)
+    }
+
+    // returns true if the arrays pass all the above checks
+    return true;
+}
+
 // decide on a random letter to be the target letter
 // make an empty array of the letters already guessed by the user
 // resets the gamestate to the default without affecting wins and losses
