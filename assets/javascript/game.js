@@ -11,7 +11,7 @@ alphabet = alphabet.split("");
 
 // gets a random element from an array
 function getRandomElement(inputArray){
-    return inputArray[(Math.floor(Math.random() * (inputArray.length - 1)))];
+    return inputArray[(Math.floor(Math.random() * inputArray.length))];
 }
 
 // decide on a random letter to be the target letter
@@ -67,8 +67,8 @@ document.onkeyup = function(userInput) {
             // add the guess to the list of already guessed letters, reduce the guesses the user has left
             guessedLetters.push(userGuess);
             guessesLeft -= 1;
-            console.log("You missed!");
             getElem("playerChoices").textContent = guessedLetters.join(" ");
+            console.log("You missed!")
             
             // if the user has no guesses left
             if (guessesLeft <= 0) {
@@ -78,7 +78,6 @@ document.onkeyup = function(userInput) {
                 getElem("playerMessage").textContent = "You ran out of guesses! The correct letter was " + targetLetter + "!";
                 gameReset();
                 console.log("You lose!");
-                
             }
         }}
     }
@@ -87,34 +86,3 @@ document.onkeyup = function(userInput) {
     getElem("losses").textContent = losses;
     getElem("guesses").textContent = guessesLeft;
 }
-// console.log(guessedLetters);
-// alert("Wins: " + wins + "\nLosses: " + losses + "\nGuesses left: " + guessesLeft + "\nAlready Guessed: \n" + guessedLetters)
-// // get user guess
-// userGuess = prompt("Guess a letter");
-// // clean user input, ask for another guess if not a letter;
-
-// // check user input to make sure it is a new guess
-// while (guessedLetters.indexOf(userGuess) !== -1) {
-//     userGuess = prompt("Guess a new letter, you've already guessed \n" + guessedLetters)
-// }
-
-// // if it is the correct letter, 
-// if (userGuess === targetLetter) {
-// // add 1 to wins, reset guesses and guess array to default
-//     wins++;
-// // set a new random letter to be guessed
-//     gameReset();
-// } else {
-// // if it is not the correct letter,
-// // add guess to guess array, reduce guesses left
-//     guessedLetters.push(userGuess);
-//     guessesLeft--;
-// // if there are no guesses left, increment losses, reset game
-//     if (guessesLeft <= 0) {
-//         alert("You Lose");
-//         losses++;
-//         gameReset();
-//     }
-// }
-// // else go back to getting user input
-// }
