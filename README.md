@@ -6,7 +6,7 @@ Guess the randomly chosen letter correctly and win! Becareful though, you only h
 
 ## Getting Started
 
-Open up the [project link](https://robertshaw87.github.io/Psychic-Game/) and you should be able to see the example webpage shown below:
+Open up the [project link](https://robertshaw87.github.io/Psychic-Game/) and you should be able to see the webpage shown below:
 
 ![Psychic Game](assets/images/readme-game.png "Psychic Game")
 
