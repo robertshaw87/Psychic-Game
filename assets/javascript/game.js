@@ -20,6 +20,10 @@ function gameReset(){
     guessedLetters = [];
     targetLetter = getRandomElement(alphabet);
     console.log("Target: " + targetLetter);
+    getElem("wins").textContent = wins;
+    getElem("losses").textContent = losses;
+    getElem("guesses").textContent = guessesLeft;
+    getElem("playerChoices").textContent = "";
 }
 
 // get a pointer to an element in the html when provided with a link
@@ -33,36 +37,46 @@ gameReset();
 
 // When a key is pressed and released:
 document.onkeyup = function(userInput) {
+    getElem("playerWins").textContent = "";
     userGuess = userInput.key;
     userGuess = userGuess.toLowerCase();
+    console.log("User Guess: " + userGuess);
 
     // ignore any key that isn't a letter or has already been guessed
-    if ((-1 != alphabet.indexOf(userGuess)) && (-1 != guessedLetters.indexOf(userGuess))) {
+    if ((-1 != alphabet.indexOf(userGuess)) && (-1 === guessedLetters.indexOf(userGuess))) {
         
         // if the guess was correct
         if (userGuess === targetLetter) {
             // increase the number of wins and reset the game to a new game
-            console.log("You win!")
+            console.log("You win!");
             wins += 1;
+            getElem("playerWins").textContent = "You guessed the correct letter! It was " + targetLetter + "!";
             gameReset();
         
         // if the guess was incorrect
         } else {
             // add the guess to the list of already guessed letters, reduce the guesses the user has left
-            guessedLetter.push(userGuess);
+            guessedLetters.push(userGuess);
             guessesLeft -= 1;
-            console.log("You missed!")
+            console.log("You missed!");
+            getElem("playerChoices").textContent = guessedLetters;
             
             // if the user has no guesses left
             if (guessesLeft <= 0) {
 
                 // increase the number of losses, reset the game to a new game
                 losses += 1;
+                getElem("playerWins").textContent = "You ran out of guesses! The correct letter was " + targetLetter + "!";
                 gameReset();
-                console.log("You lose!")
+                console.log("You lose!");
+                
             }
         }
     }
+
+    getElem("wins").textContent = wins;
+    getElem("losses").textContent = losses;
+    getElem("guesses").textContent = guessesLeft;
 }
 // console.log(guessedLetters);
 // alert("Wins: " + wins + "\nLosses: " + losses + "\nGuesses left: " + guessesLeft + "\nAlready Guessed: \n" + guessedLetters)
