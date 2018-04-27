@@ -1,0 +1,65 @@
+body {
+    background-image: url("../images/background.jpg");
+    background-repeat: repeat;
+    opacity: .9;
+}
+
+header {
+    background-color: #707;
+    font-family: 'Permanent Marker', cursive;
+    letter-spacing: 4px;
+}
+
+#psychic-header {
+    color: #ebe;
+}
+
+.bottom-elements {
+    background-color: rgba(119,0,119,.7);
+    font-family: 'Kalam', cursive;
+    animation-name: bottom-animation;
+    animation-duration: 1s;
+}
+
+@keyframes bottom-animation {
+    0%{
+        transform: scaleX(1);
+    }
+    50%{
+        transform: scaleX(0);
+    }
+    100%{
+        transform: scaleX(1);
+    }
+
+}
+
+#wins-element {
+    background-color: rgba(70,0,119,.7);
+    animation-name: wins-animation;
+    animation-duration: .6s;
+}
+
+@keyframes wins-animation {
+    0% {
+        transform:rotate(0deg);
+    }
+    100% {
+        transform:rotate(360deg);
+    }
+}
+
+#losses-element {
+    background-color: rgba(119,0,50,.7);
+    animation-name: losses-animation;
+    animation-duration: .6s;
+}
+
+@keyframes losses-animation {
+    0% {
+        transform:rotate(0deg);
+    }
+    100% {
+        transform:rotate(-360deg);
+    }
+}
