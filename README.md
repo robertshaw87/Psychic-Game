@@ -43,6 +43,10 @@ There are messages logged to the console if you want to see some of the debuggin
 
 * [BootstrapCDN v4.1.0](https://getbootstrap.com/docs/4.1/getting-started/introduction/) - The web framework used
 
+## Challenges
+
+The hardest part about this app was actually finishing it before I dove into its successor [Explore the Stars](https://github.com/robertshaw87/Word-Guess-Game/). I learned so much about the possibilities of dynamic generation during this project that the initial scope felt so limiting I wanted to abandon it. In the end, I persevered and made a product that I'm satisfied with because it does everything I set out to make it do.
+
 ## Authors
 
 * **Robert Shaw** - *Initial work* - [robertshaw87](https://github.com/robertshaw87)
